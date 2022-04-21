@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from "next";
+import Head from "next/head";
 
-const Index: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <div>
       <Head>
@@ -11,6 +11,8 @@ const Index: NextPage = () => {
       <main>
         <h1>Next.js 100 - TypeScript</h1>
       </main>
-      </div>
-      )
-  }
+    </div>
+  );
+};
+
+export default Home;
