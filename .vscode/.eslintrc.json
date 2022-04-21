@@ -1,0 +1,14 @@
+{
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error", //error, warn, off
+    "@typescript-eslint/no-explicit-any": "warn",
+		"@typescript-eslint/no-non-null-assertion": "warn",
+		"@typescript-eslint/no-var-requires": 0
+  }
+}
