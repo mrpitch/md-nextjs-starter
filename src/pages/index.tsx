@@ -1,18 +1,26 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import Head from 'next/head'
 
-const Home: NextPage = () => {
-  return (
-    <div>
-      <Head>
-        <title>Next.js 100 - TypeScript</title>
-      </Head>
+import { IPostMeta } from '@/@types/index'
+import { getAllPosts } from '@/src/api'
 
-      <main>
-        <h1>Next.js 100 - TypeScript</h1>
-      </main>
-    </div>
-  );
-};
+import Articles from '@/components/Articles'
 
-export default Home;
+export default function Home({ posts }: { posts: IPostMeta[] }) {
+	return (
+		<>
+			<Head>
+				<title>Home</title>
+			</Head>
+			<h1>Articles</h1>
+			<Articles posts={posts} />
+		</>
+	)
+}
+
+export async function getStaticProps() {
+	const posts = getAllPosts()
+		.slice(0, 9)
+		.map((post) => post.meta)
+
+	return { props: { posts } }
+}
