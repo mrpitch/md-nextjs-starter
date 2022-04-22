@@ -4,10 +4,10 @@ import { sync } from 'glob'
 import matter from 'gray-matter'
 import { IPage, IPageMeta } from '@/@types/index'
 
-const CONTENT_PATH = path.join(process.cwd(), 'src/content')
+const POST_PATH = path.join(process.cwd(), 'src/content/posts')
 
 export const getSlugs = (): string[] => {
-	const paths = sync(`${CONTENT_PATH}/*.mdx`)
+	const paths = sync(`${POST_PATH}/*.mdx`)
 
 	return paths.map((path) => {
 		const parts = path.split('/')
@@ -17,7 +17,7 @@ export const getSlugs = (): string[] => {
 	})
 }
 
-export const getAllPages = () => {
+export const getAllPosts = () => {
 	const pages = getSlugs()
 		.map((slug) => getPageFromSlug(slug))
 		.sort((a, b) => {
@@ -30,8 +30,8 @@ export const getAllPages = () => {
 }
 
 export const getPageFromSlug = (slug: string): IPage => {
-	const pagePath = path.join(CONTENT_PATH, `${slug}.mdx`)
-	const source = fs.readFileSync(pagePath)
+	const postPath = path.join(POST_PATH, `${slug}.mdx`)
+	const source = fs.readFileSync(postPath)
 	const { content, data } = matter(source)
 
 	return {
