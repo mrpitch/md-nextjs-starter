@@ -2,29 +2,24 @@ import type { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 import Head from 'next/head'
 
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
 import { getPostFromSlug, getSlugs } from '@/src/api'
 
-import YouTubePlayer from '@/components/YouTubePlayer'
-import { IPostMeta } from '@/@types/index'
+import YouTube from '@/components/YouTube'
+import { IMDXPost } from '@/src/@types'
 
-interface MDXPost {
-	source: MDXRemoteSerializeResult<Record<string, unknown>>
-	meta: IPostMeta
-}
-
-export default function PostPage({ post }: { post: MDXPost }) {
+export default function PostPage({ post }: { post: IMDXPost }) {
 	return (
 		<>
 			<Head>
 				<title>{post.meta.title}</title>
 			</Head>
 			<h1>{post.meta.title}</h1>
-			{/* <MDXRemote {...post.source} components={{ YouTubePlayer, Image }} /> */}
+			<MDXRemote {...post.source} components={{ YouTube, Image }} />
 		</>
 	)
 }

@@ -1,6 +1,6 @@
-export default function YouTube({ id }: { id: string }) {
+const YouTube = ({ id }: { id: string }) => {
 	return (
-		<div>
+		<div className="block">
 			<iframe
 				src={`https://www.youtube.com/embed/${id}`}
 				allow="autoplay; encrypted-media"
@@ -9,3 +9,5 @@ export default function YouTube({ id }: { id: string }) {
 		</div>
 	)
 }
+
+export default YouTube
