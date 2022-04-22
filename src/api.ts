@@ -19,7 +19,7 @@ export const getSlugs = (): string[] => {
 
 export const getAllPosts = () => {
 	const pages = getSlugs()
-		.map((slug) => getPageFromSlug(slug))
+		.map((slug) => getPostFromSlug(slug))
 		.sort((a, b) => {
 			if (a.meta.date > b.meta.date) return 1
 			if (a.meta.date < b.meta.date) return -1
@@ -29,7 +29,7 @@ export const getAllPosts = () => {
 	return pages
 }
 
-export const getPageFromSlug = (slug: string): IPage => {
+export const getPostFromSlug = (slug: string): IPage => {
 	const postPath = path.join(POST_PATH, `${slug}.mdx`)
 	const source = fs.readFileSync(postPath)
 	const { content, data } = matter(source)

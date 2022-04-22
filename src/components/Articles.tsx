@@ -23,12 +23,11 @@ export default function Articles({ posts }: { posts: IPostMeta[] }) {
 						{post.description}
 					</p>
 					<div className="text-pr mt-3">
-						<a
-							href={post.slug}
-							className="text-base font-semibold text-primary-600 hover:text-primary-500"
-						>
-							Read full story
-						</a>
+						<Link href={`/blog/${post.slug}`}>
+							<a className="text-base font-semibold text-primary-600 hover:text-primary-500">
+								Read full story
+							</a>
+						</Link>
 					</div>
 				</div>
 			))}
