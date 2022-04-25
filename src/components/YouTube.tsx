@@ -1,4 +1,7 @@
-const YouTube = ({ id }: { id: string }) => {
+interface IYoutube {
+	id: string
+}
+const YouTube = ({ id }: IYoutube) => {
 	return (
 		<div className="block">
 			<iframe

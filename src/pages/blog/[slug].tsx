@@ -9,7 +9,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeHighlight from 'rehype-highlight'
 import { getPostFromSlug, getSlugs } from '@/src/api'
 
-import YouTube from '@/components/YouTube'
+import { Features, Feature } from '@/components/Features'
+import Intro from '@/components/Intro'
 import { IMDXPost } from '@/src/@types'
 
 export default function PostPage({ post }: { post: IMDXPost }) {
@@ -18,8 +19,7 @@ export default function PostPage({ post }: { post: IMDXPost }) {
 			<Head>
 				<title>{post.meta.title}</title>
 			</Head>
-			<h1>{post.meta.title}</h1>
-			<MDXRemote {...post.source} components={{ YouTube, Image }} />
+			<MDXRemote {...post.source} components={{ Intro, Features, Feature }} />
 		</>
 	)
 }
