@@ -5,8 +5,14 @@ export interface IPage {
 
 export interface IPageMeta {
 	description: string
-	slug: string
+	page: string
 	title: string
 	tags: string[]
 	date: string
+}
+
+export interface IMDXPage {
+	//source: MDXRemoteSerializeResult<Record<string, unknown>>
+	source: any
+	meta: IPageMeta
 }
